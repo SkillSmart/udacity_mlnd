@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>student_intervention</title><script type="text/javascript" src="/8328659E17A640E49CD6C413F2002C11/272E35AB-89A5-1041-978B-5BD6B6FD948A/main.js" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>student_intervention</title><script type="text/javascript" src="/8328659E17A640E49CD6C413F2002C11/32D60235-9EBB-1E40-9185-5DE3BA84ABA8/main.js" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11879,14 +11879,14 @@ The outcome is a binary class label for each student in ('does' / 'does'n') need
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[173]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Calculate number of students</span>
 <span class="n">n_students</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># TODO: Calculate number of features</span>
-<span class="n">n_features</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
 <span class="c1"># TODO: Calculate passing students</span>
 <span class="n">n_passed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">student_data</span><span class="p">[</span><span class="s1">&#39;passed&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;yes&quot;</span><span class="p">)</span>
@@ -11895,7 +11895,7 @@ The outcome is a binary class label for each student in ('does' / 'does'n') need
 <span class="n">n_failed</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">student_data</span><span class="p">[</span><span class="s1">&#39;passed&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;no&quot;</span><span class="p">)</span>
 
 <span class="c1"># TODO: Calculate graduation rate</span>
-<span class="n">grad_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_passed</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_students</span><span class="p">)</span>
+<span class="n">grad_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_passed</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_students</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
 
 <span class="c1"># Print the results</span>
 <span class="k">print</span> <span class="s2">&quot;Total number of students: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_students</span><span class="p">)</span>
@@ -11920,10 +11920,10 @@ The outcome is a binary class label for each student in ('does' / 'does'n') need
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Total number of students: 395
-Number of features: 31
+Number of features: 30
 Number of students who passed: 265
 Number of students who failed: 130
-Graduation rate of the class: 0.67%
+Graduation rate of the class: 67.09%
 </pre>
 </div>
 </div>
@@ -12113,7 +12113,7 @@ Feature values:
 <span class="c1"># TODO: Set the number of training points</span>
 <span class="n">num_train</span> <span class="o">=</span> <span class="mi">300</span>
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">num_train</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">num_train</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
 
 <span class="c1"># Set the number of testing points</span>
 <span class="n">num_test</span> <span class="o">=</span> <span class="n">X_all</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">num_train</span>
@@ -12199,6 +12199,10 @@ This becomes especially evident when working with temporal or strucural data lik
 <li>Sequence classification tasks (like classifying Text) where it disregards the structural component of the data and just looks at the propability for each individual word</li>
 <li>When no two features have no common occurence in the data the propability is 0. Following the Conditional independence assumption, the multiplication then also amounts to 0.</li>
 </ul>
+<h4 id="Reasons-for-choosing">Reasons for choosing<a class="anchor-link" href="#Reasons-for-choosing">&#194;&#182;</a></h4><ul>
+<li>Represents a nice out of the box algorithm that focuses on clear coocurrence patterns in the data and gives a nice baseline for comparing other Algorithms</li>
+<li>Also, as it is very robust to overfitting, i chose it to give a baseline for reasonable model performance for the comparision of tree based Models</li>
+</ul>
 
 </div>
 </div>
@@ -12219,6 +12223,10 @@ K-means is a heuristic algorithm that partitions a dataset into k clusters by it
 <li>Need to manually determine the parameter K</li>
 <li>Selection of the appropriate Distance Measure is iterative</li>
 <li>Computation costs scale badly, as the distance between all Points has to be calculated in each iteration</li>
+</ul>
+<h4 id="Reasons-for-choosing">Reasons for choosing<a class="anchor-link" href="#Reasons-for-choosing">&#194;&#182;</a></h4><ul>
+<li>As a instance based learner it might help to make the most of the little available data</li>
+<li>It is also helpfull that it can tell us about where the outer range and the inner core of each class is located based on students. This can help Teachers get a better feeling for additional things to look out for when identifying low performers</li>
 </ul>
 
 </div>
@@ -12247,6 +12255,11 @@ It is an "adaptive" Approach, as consequently trained Models are tweeked to focu
 <li>Increases the complexity of the classification involved</li>
 <li>Easily overfitts on outliers</li>
 </ul>
+<h4 id="Reasons-for-choosing">Reasons for choosing<a class="anchor-link" href="#Reasons-for-choosing">&#194;&#182;</a></h4><ul>
+<li>Decission Trees are able to represent non-linear relations, and still provide an easily interpretable model that can be investigated by teachers and the board.</li>
+<li>Ensemble methods help to keep the trees from overfitting the small amount of data available</li>
+<li>For their inherent feature reduction mechanisms, they are helpfull to provide additional information on how important each feature is to the classification.</li>
+</ul>
 
 </div>
 </div>
@@ -12267,19 +12280,6 @@ It is an "adaptive" Approach, as consequently trained Models are tweeked to focu
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -12393,7 +12393,7 @@ It is an "adaptive" Approach, as consequently trained Models are tweeked to focu
     <span class="k">for</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="ow">in</span> <span class="p">([(</span><span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">),</span>
                               <span class="p">(</span><span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">),</span>
                               <span class="p">(</span><span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">)]):</span>
-        <span class="n">train_predict</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+        <span class="n">train_predict</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1234</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12692,7 +12692,8 @@ This helps to make the most of the little data we have, and its flexible enough 
 <span class="n">f1_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">f1_score</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span>
 
 <span class="c1"># TODO: Perform grid search on the classifier using the f1_scorer as the scoring method</span>
-<span class="n">grid_obj</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">ABC</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">params_dict</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">f1_scorer</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">grid_obj</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">ABC</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">params_dict</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">f1_scorer</span><span class="p">,</span> 
+                        <span class="n">n_jobs</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
 
 <span class="c1"># TODO: Fit the grid search object to the training data and find the optimal parameters</span>
 <span class="n">grid_obj</span> <span class="o">=</span> <span class="n">grid_obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>

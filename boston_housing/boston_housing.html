@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>boston_housing</title><script type="text/javascript" src="/8328659E17A640E49CD6C413F2002C11/A17B3C20-A335-9D40-BB1F-D682096CBB75/main.js" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>boston_housing</title><script type="text/javascript" src="/8328659E17A640E49CD6C413F2002C11/F6670806-C341-1C41-9F7C-94B142D1B43B/main.js" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11802,13 +11802,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">ShuffleSplit</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">ShuffleSplit</span>
 
 <span class="c1"># Import supplementary visualizations code visuals.py</span>
 <span class="kn">import</span> <span class="nn">visuals</span> <span class="kn">as</span> <span class="nn">vs</span>
@@ -11875,36 +11875,23 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Mean price of the data</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Median price of the data</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Standard deviation of prices of the data</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Show the calculated statistics</span>
 <span class="k">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -11935,7 +11922,7 @@ Minimum price: $105,000.00
 Maximum price: $1,024,800.00
 Mean price: $454,342.94
 Median price $438,900.00
-Standard deviation of prices: $165,340.28
+Standard deviation of prices: $165,171.13
 </pre>
 </div>
 </div>
@@ -11966,9 +11953,16 @@ Standard deviation of prices: $165,340.28
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ul>
-<li>RM Increase increases MEDV</li>
-<li>LSTAT Increase decreases MEDV</li>
-<li>PTRATIO Increase decreases MEDV</li>
+<li>RM Increase increases MEDV:
+<br>
+As rooms are calculated in their size based on their common usage by architects we can assume that the number of rooms is a strong indicator of the overall size of a house, as well as highly correlated with the properties status. 
+The more rooms a house has, the higher the size and also slightly increased property status which will lead to an increase in overall Value.</li>
+<li>LSTAT Increase decreases MEDV
+<br>
+LSTAT indicates the amount of lower class house owners / total house owners. An increase in this measure indicates a higher percentage of lower class ('working poor') Citizens. House owners can not fancy to buy high valued property, and upper class citizens will likely not look for Housing in Areas that offer low cost housing. As such, an increased percentage will drop the overall pricepoint for the house.</li>
+<li>PTRATIO Increase decreases MEDV
+<br>
+Socia economic standard for an area can likely be measured by the amount of public/private funded schooling, with the later having the necessary ressources to higher well qualified teachers for small class sizes. With a decrease in the Teacher to Student Ratio i assume an overall increase in socio economic measures, thereby indicating higher Housing Prices.</li>
 </ul>
 
 </div>
@@ -13742,9 +13736,13 @@ JDAUeiIiEhj/H4Ixu7KNCSjnAAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ul>
-<li>At maxDepth = 1 the model clearly suffers from high variance which does not allow a relevant feature representation and leads to poor performance.</li>
-<li>At maxDepth=10 the model already strongly overfitts the data leading to high bias, which in turn decreases its abbility to generalize well to unseen data.</li>
+<li>At maxDepth = 1 the model clearly suffers from high bias as the model does not give enough attention to relevant feature representation. This leads to poor performance (underfitting).</li>
+<li>At maxDepth=10 the model already strongly overfitts the data leading to high variance, which in turn decreases its abbility to generalize well to unseen data.</li>
 </ul>
+<p><br>
+Inspecting the Graph, we can clearly see that both the training and Validation Score increase up to a max_depth = 4 at which the performance curves split. The Training score keeps increasing, while the performance curve on the Validation set drops off. 
+<br>
+As the Performance levels off at a very early stage, it seems indicated that the chosen Model can not make enough use of the Information in the given Set and a more complex (non-linear) model should be tried.</p>
 
 </div>
 </div>
